@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import axios from 'axios';
+
 
 export default {
   name: 'Home',
@@ -18,9 +18,8 @@ export default {
 
   methods:{
     getSimNao(){
-      var url = "http://localhost:3000/faturas/inadimplencias/12";
-      axios.defaults.headers.common['Access-Control-Allow-Origin'] = '*';
-      axios.get(url,  ).then(function(res){
+      var url = "faturas/inadimplencias/12";
+      this.$http.get(url).then(function(res){
         console.log(res);
       })
     }
