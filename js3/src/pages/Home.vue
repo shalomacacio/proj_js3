@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>Home</h1>
+    <h1>{{ name }}</h1>
     <ul>
       <li><a href="#"  @click="getSimNao()" >Sim Não</a></li>
     </ul>
@@ -8,24 +8,23 @@
 </template>
 
 <script>
-
-
 export default {
-  name: 'Home',
+  
+  data:{
+    name: 'Home'
+  },
+
   props: {
     msg: String
   },
-
   methods:{
     getSimNao(){
       var url = "faturas/inadimplencias/12";
       this.$http.get(url).then(function(res){
         console.log(res);
       })
-    }
-
-    
+    } 
   }
-
 }
+
 </script>
