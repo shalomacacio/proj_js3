@@ -19,6 +19,7 @@ faturas.get('/inadimplencias/:dias',(req, res, next )=>{
     var dia = data.getDate();
     var mes = data.getMonth();
     var ano = data.getFullYear();
+    
     function zero(i){
       if(i < 10){
         return "0" + i;
@@ -29,8 +30,6 @@ faturas.get('/inadimplencias/:dias',(req, res, next )=>{
     var hoje = ano +'-'+zero(mes)+'-'+ zero(dia);
     
     var query = "SELECT * FROM public.vi_js3_relat_inadimplencias  WHERE data_vencimento < '"+hoje+"' AND (DATE(NOW()) - data_vencimento) >= "+ dias; 
-   
-    // console.log(query);
     
      pool.query( query , (error, results) => {
         if (error) {

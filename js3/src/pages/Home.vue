@@ -10,9 +10,7 @@
 <script>
 export default {
   
-  data:{
-    name: 'Home'
-  },
+
 
   props: {
     msg: String
@@ -21,7 +19,9 @@ export default {
     getSimNao(){
       var url = "faturas/inadimplencias/12";
       this.$http.get(url).then(function(res){
-        console.log(res);
+        res.array.forEach(element => {
+          console.log(element)
+        });
       })
     } 
   }
