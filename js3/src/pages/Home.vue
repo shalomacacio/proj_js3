@@ -1,30 +1,37 @@
 <template>
-  <div>
-    <h1>{{ name }}</h1>
+  <main>
+    <h1 @click="getSimNao()">home</h1>
     <ul>
-      <li><a href="#"  @click="getSimNao()" >Sim Não</a></li>
+      <li v-for="(fatura, index) in faturas" :key="index"> {{ fatura }} </li>
     </ul>
-  </div>
+  </main>
 </template>
 
 <script>
 export default {
-  
 
+    data(){
+      return {
+        faturas: [],
+      }
+    },
 
-  props: {
-    msg: String
-  },
-  methods:{
+    methods:{
     getSimNao(){
       var url = "faturas/inadimplencias/12";
       this.$http.get(url).then(function(res){
-        res.array.forEach(element => {
-          console.log(element)
-        });
+        console.log(res)
+        this.faturas = res.data
       })
     } 
   }
+
+
 }
 
 </script>
+<style scoped>
+  main{
+    background-color: var(--color-background-home);
+  }
+</style>

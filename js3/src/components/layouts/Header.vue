@@ -30,7 +30,6 @@ export default {
         return {
             menuActive : false
         }
-
     },
     methods:{
         openMenu: function(){
@@ -56,6 +55,8 @@ export default {
     nav{
         display: flex;
         justify-content: space-between;
+        height: 60px;
+        align-items: center;
 
     }
 
@@ -110,5 +111,39 @@ export default {
 
     ul li a{
         color: var(--color-text-menu);
+    }
+
+    @media(min-width:700px){
+        #menu-button,
+        #menu-logo,
+        #menu-overlay{
+            display: none;
+        }
+
+        #menu-items{
+            background-color: var(--color-background-nav);
+            color: var(--color-text-light) !important;
+            display: flex;
+            position: static;
+            height: 60px;
+            width: auto;
+        }
+
+        ul{
+            display: flex;
+            flex-direction: row;
+            height: 60px;
+            align-items:center;
+        }
+
+        ul li{
+           margin: 0;
+           margin-left: 20px;
+        }
+
+        ul li a{
+            color: var(--color-text-light);
+        }
+        
     }
 </style>
