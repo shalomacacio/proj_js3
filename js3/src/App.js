@@ -1,22 +1,17 @@
-import  React, {useState} from "react";
+import  React from "react";
 import Header from "./components/Header";
+import Content from "./components/Content";
 import Footer from "./components/Footer";
 import Filter from "./components/Filter";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const App = () => {
 
-    const [num, setNum] = useState(0);
-
-    function incrementa(){
-        return setNum(num+10);
-    }
-
-
     return (
         <div>
-            <Header num={num} />
-            <button onClick={incrementa}> +10 </button>
+            <Header />
             <Filter />
+            <Content />
             <Footer />
         </div>
 

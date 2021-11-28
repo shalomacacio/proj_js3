@@ -35,6 +35,7 @@ faturas.get('/inadimplencias/:dias',(req, res, next )=>{
         if (error) {
           throw error
         }
+        res.setHeader('Content-Type', 'application/json');
         res.status(200).json(results.rows)
       })
       

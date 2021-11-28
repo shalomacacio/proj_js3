@@ -1,11 +1,20 @@
 import React from "react";
+import { Container, Col, Row } from "react-bootstrap";
 
-const Footer = () => {
+
+const Footer = (props) => {
+
     return (
-        <footer>
-          <p>  Totos los dectos reservadios ;) ! </p>
-        </footer>
+       
+        <Container>
+        <Row>
+            <Col sm>
+                <p>Todos os direitos reservados:</p>
+            </Col>
+        </Row>
+        </Container>
+      
     );
-}
+} 
 
 export default Footer;
