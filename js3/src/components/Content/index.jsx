@@ -11,7 +11,7 @@ const Content = (props) => {
         api.get("faturas/inadimplencias/12")
         .then((res) => { 
             setInadimplencias(res.data);
-            // console.log(res.data)
+            console.log(res.data)
           } 
         )
         .catch((err)=>{
@@ -25,16 +25,44 @@ const Content = (props) => {
 
     return (
         <Container>
-            <Table responsive>
+            <Table responsive size="xs" >
                 <thead>
                     <tr>
-                        <th>Fatura</th>
+                        <th>Telefone</th>
+                        <th>Cliente</th>
+                        <th>Contrato</th>
+                        <th>Ativação</th>
+                        <th>Endereço</th>
+                        <th>Bairro</th>
+                        <th>Unidade</th>
+                        <th>Vencimento</th>
+                        <th>Dias</th>
+                        <th>Valor</th>
+                        <th>Can Aberto</th>
+                        <th>Dt Ticket</th>
+                        <th>Status Cob</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                    {inadimplencias?.map( (fatura) => (<td key={fatura.codfatura}> {fatura.codfatura} </td>))}
-                    </tr>
+                {/* TELEFONE	CLIENTE	CONTRATO	ATIVAÇÃO	ENDEREÇO	BAIRRO	UNIDADE	VENCIMENTO	DIAS	VALOR	CAN ABERTO	DT TICKET	STATUS COB */}
+                    {inadimplencias?.map( (fatura, i) => (
+                        <tr>
+                            <td key={i}> {fatura.fone01} {fatura.fone02?'|'+ fatura.fone02 : null } {fatura.contato?'|'+ fatura.contato : null } </td>
+                            <td key={i}> {fatura.nome_razaosocial} </td>
+                            <td key={i}> {fatura.codcontrato} </td> 
+                            <td key={i}> {fatura.dt_ativacao} </td> 
+                            <td key={i}> {fatura.logradouro} </td> 
+                            <td key={i}> {fatura.bairro} </td> 
+                            <td key={i}> {fatura.unidade} </td> 
+                            <td key={i}> {fatura.data_vencimento} </td> 
+                            <td key={i}> {fatura.dias} </td> 
+                            <td key={i}> {fatura.valor_total} </td> 
+                            <td key={i}> {fatura.dt_ativacao} </td> 
+                            <td key={i}> {fatura.dt_ativacao} </td> 
+                            <td key={i}> {fatura.classificacao} </td> 
+                        </tr>
+                    ))}
+                    
                 </tbody>
             </Table>
         </Container>
