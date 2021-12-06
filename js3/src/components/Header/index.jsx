@@ -1,30 +1,51 @@
-import React from "react";
-import { Container, Image, Nav, NavDropdown, Navbar } from "react-bootstrap";
-import logo from './images/logo.png'
+import React from 'react';
+import {
+    Navbar,
+    NavbarBrand,
 
-const Header = (props) => {
+} from 'reactstrap';
+import './style.css';
+
+
+/*--------------------------------------------------------------------------------*/
+/* Import images which are need for the HEADER                                    */
+/*--------------------------------------------------------------------------------*/
+import logolighttext from './images/logo3.png';
+
+
+const Header = () => {
+
+    const showMobilemenu = () => {
+        document.getElementById('main-wrapper').classList.toggle('show-sidebar');
+    }
+
+    /*--------------------------------------------------------------------------------*/
+    /*To open Search Bar                                                              */
+    /*--------------------------------------------------------------------------------*/
+    const toggleMenu = () => {
+        document.getElementById('search').classList.toggle('show-search');
+    }
+
 
     return (
-        <Navbar bg="light" expand="lg">
-        <Container>
-            <Navbar.Brand href="#home"><Image src={logo} style={{ width:'100px'}} /></Navbar.Brand>
-            <Navbar.Toggle aria-controls="basic-navbar-nav" />
-            <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="me-auto">
-                <Nav.Link href="#home">Home</Nav.Link>
-                <Nav.Link href="#link">Link</Nav.Link>
-                <NavDropdown title="Dropdown" id="basic-nav-dropdown">
-                <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
-                <NavDropdown.Divider />
-                <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
-                </NavDropdown>
-            </Nav>
-            </Navbar.Collapse>
-        </Container>
-        </Navbar>
+        <header className="topbar navbarbg">
+            <Navbar className="top-navbar" dark expand="md">
+                <div className="navbar-header" id="logobg" >
+                    <NavbarBrand href="/">
+                        <span className="logo-text">
+                            <img src={logolighttext} className="light-logo" alt="homepage" />
+                        </span>
+                    </NavbarBrand>
+                    {/*--------------------------------------------------------------------------------*/}
+                    {/* Mobile View Toggler  [visible only after 768px screen]                         */}
+                    {/*--------------------------------------------------------------------------------*/}
+                    <button className="btn-link nav-toggler d-block d-md-none text-white" onClick={() => showMobilemenu()} >
+                        <i className="ti-menu ti-close" />
+                    </button>
+                </div>
+                
+            </Navbar>
+        </header>
     );
-} 
-
+}
 export default Header;

@@ -1,7 +1,7 @@
 import React from "react";
 import { Container, Col, FloatingLabel, Form,  Navbar, Row } from "react-bootstrap";
 
-const Footer = (props) => {
+const Filter = (props) => {
 
     return (
         <Navbar bg="light" expand="sm">
@@ -29,4 +29,4 @@ const Footer = (props) => {
     );
 } 
 
-export default Footer;
+export default Filter;
