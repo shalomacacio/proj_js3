@@ -1,5 +1,5 @@
 import React from 'react';
-import { AvatarImg, HeaderContainer,  HorizontalContainer, LogoImg, MenuCheck, MenuItem, MenuLbl, MenuLi, MenuUl , VerticalContainer} from './HeaderElements'
+import { AvatarImg, HeaderContainer,  HorizontalContainer, LogoImg, MenuCheck, MenuItem, MenuLbl, MenuLi, MenuUl, MenuLink, VerticalContainer} from './HeaderElements'
 import logo from '../../assets/images/logo-white.png';
 import avatar from '../../assets/images/user.jpg'
 
@@ -12,10 +12,10 @@ const Header = () => {
                 <MenuCheck type={'checkbox'} id='check1'/> 
                 <MenuLbl htmlFor='check1' >Menu</MenuLbl>
                 <MenuUl>
-                    <MenuLi>Operacional </MenuLi>
-                    <MenuLi>Financeiro </MenuLi>
-                    <MenuLi>Estoque </MenuLi>
-                    <MenuLi>Relatórios </MenuLi>
+                    <MenuLi><MenuLink to="/">Operacional</MenuLink> </MenuLi>
+                    <MenuLi><MenuLink to="/">Financeiro</MenuLink> </MenuLi>
+                    <MenuLi><MenuLink to="/">Estoque</MenuLink> </MenuLi>
+                    <MenuLi><MenuLink to="/">Relatórios</MenuLink> </MenuLi>
                 </MenuUl>
             </MenuItem>
         </VerticalContainer>
@@ -26,7 +26,6 @@ const Header = () => {
             <span>Fulano</span>
             <AvatarImg src={avatar} alt='avatar' />
         </HorizontalContainer>
-          
     </HeaderContainer>
   );   
 };

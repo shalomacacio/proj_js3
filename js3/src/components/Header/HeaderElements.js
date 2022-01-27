@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 export const HeaderContainer = styled.header`
     background: #5A8DEE;
@@ -61,7 +62,6 @@ export const MenuUl = styled.ul`
 `
 export const MenuLi = styled.li`
     width: 300px;
-    height: 30px;
     padding: 15px;
     display: block;
     list-style: none;
@@ -85,3 +85,6 @@ export const MenuItem = styled.nav`
         max-height: 200px;
     }
 `
+export const MenuLink = styled(Link)`
+    text-decoration: none;
+`;
