@@ -1,9 +1,9 @@
 import  React from "react";
 import { GlobalStyle } from './globalSytels';
-
+import { BrowserRouter as Router } from 'react-router-dom';
+import Routes from './routes';
 
 import Header from "./components/Header";
-import Content from "./components/Header/Content";
 import Footer from "./components/Footer";
 
 
@@ -12,12 +12,12 @@ const App = () => {
 
     return (
         <>
+        <Router>
             <GlobalStyle />
             <Header />
-            <Content>
-                
-             </Content> 
+                <Routes />
             <Footer />
+        </Router>
         </>
     );
 }

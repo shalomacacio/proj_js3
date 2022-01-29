@@ -42,6 +42,7 @@ export const MenuLbl = styled.label`
     color: #fff;
     border-bottom: 2px solid #aaa;
     text-align: center;
+    border-radius: 0.25rem;
     
     &:hover {
         background: #5a8dee;

@@ -12,7 +12,7 @@ const Header = () => {
                 <MenuCheck type={'checkbox'} id='check1'/> 
                 <MenuLbl htmlFor='check1' >Menu</MenuLbl>
                 <MenuUl>
-                    <MenuLi><MenuLink to="/">Operacional</MenuLink> </MenuLi>
+                    <MenuLi><MenuLink to="/sla-garantia">Operacional</MenuLink> </MenuLi>
                     <MenuLi><MenuLink to="/">Financeiro</MenuLink> </MenuLi>
                     <MenuLi><MenuLink to="/">Estoque</MenuLink> </MenuLi>
                     <MenuLi><MenuLink to="/">Relatórios</MenuLink> </MenuLi>
@@ -20,7 +20,7 @@ const Header = () => {
             </MenuItem>
         </VerticalContainer>
 
-        <LogoImg src={logo}  alt='logo'/> 
+        <MenuLink to="/"><LogoImg src={logo}  alt='logo'/> </MenuLink> 
      
         <HorizontalContainer>
             <span>Fulano</span>

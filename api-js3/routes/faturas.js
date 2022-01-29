@@ -4,32 +4,25 @@ const pool = require('../db/pgsql');
 
 
 
-faturas.get('/:dias',(req, res, next )=>{
+faturas.get('/',(req, res, next )=>{
 
 res.status(200).send({
-    messgae: "dias:"+ req.params.dias
+    messgae: "dias:"
 });
       
 })
 
-faturas.get('/inadimplencias/:dias',(req, res, next )=>{
+faturas.get('/inadimplencias',(req, res, next )=>{
 
-    var dias = req.params.dias;
-    var data = new Date();
-    var dia = data.getDate();
-    var mes = data.getMonth();
-    var ano = data.getFullYear();
-    
-    function zero(i){
-      if(i < 10){
-        return "0" + i;
-      }else {
-        return i;
-      }
-    }
-    var hoje = ano +'-'+zero(mes)+'-'+ zero(dia);
-    
-    var query = "SELECT * FROM public.vi_js3_relat_inadimplencias  WHERE data_vencimento < '"+hoje+"' AND (DATE(NOW()) - data_vencimento) >= "+ dias; 
+    var query = "select os.codos, p.codpessoa, p.nome_razaosocial, os.data_abertura, os.data_fechamento, tipo.descricao as tipo_os \
+    from public.mk_os as os join mk_pessoas as p on os.cliente = p.codpessoa \
+    join mk_os_tipo as tipo on os.tipo_os = tipo.codostipo \
+    where os.data_abertura between '2022-01-01' and '2022-01-27' \
+    and tipo.descricao ilike '%sup%' \
+    group by os.codos, p.codpessoa,  p.nome_razaosocial, tipo.descricao \
+    having ( select count(*) from mk_os as os join mk_os_tipo as tipo1 on os.tipo_os = tipo1.codostipo \
+              where data_abertura between '2022-01-01' and '2022-01-27' and cliente = p.codpessoa and tipo1.descricao ilike '%sup%' ) > 1 \
+     order by os.cliente asc"; 
     
      pool.query( query , (error, results) => {
         if (error) {
