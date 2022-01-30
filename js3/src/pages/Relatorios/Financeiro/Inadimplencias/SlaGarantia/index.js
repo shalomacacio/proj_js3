@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Card, HorizontalContainer, Content, Filter, FilterForm , FormBtn, FormControl, Table } from './SlaGarantiaElements.js'
+import { Card, CardTitle, HorizontalContainer,  LinkBtn,Content, Filter, FilterForm , FormBtn, FormControl, Table } from './SlaGarantiaElements.js'
 import api from '../../../../../services/api';
 
 const SlaGarantia = () => {
@@ -15,6 +15,10 @@ const SlaGarantia = () => {
   <>
   <HorizontalContainer>
     <Filter>
+      <div></div>
+    </Filter>
+
+    <Filter>
         <h3> Filtros: </h3>
       <FilterForm>
 
@@ -29,15 +33,16 @@ const SlaGarantia = () => {
         
       </FilterForm>
     </Filter>
-    <Filter>
-      <FormBtn green> Exportar Excel </FormBtn>
-    </Filter>
     
   </HorizontalContainer>
 
     <Content>
-
       <Card>
+        <CardTitle>
+          <h4> RELATÓRIO: SLA-GARANTIA </h4>
+          <LinkBtn green> Exportar Excel </LinkBtn>
+        </CardTitle>
+
         <Table>
           <thead>
             <tr>

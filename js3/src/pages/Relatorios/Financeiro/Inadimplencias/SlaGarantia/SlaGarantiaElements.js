@@ -40,7 +40,6 @@ export const FormControl = styled.div`
 `
 export const FormBtn = styled.button`
     background: ${props => props.green ? "#29b929" : "#5A8DEE"};
-
     display: inline-block;
     padding: 0.375rem 0.75rem;
     margin-left: 20px;
@@ -52,16 +51,36 @@ export const FormBtn = styled.button`
     font-size: 1rem;
     cursor: pointer;
 `;
-
+export const LinkBtn = styled.button`
+    background: ${props => props.green ? "#29b929" : "#5A8DEE"};
+    display: inline-block;
+    padding: 0.375rem 0.75rem;
+    margin: 10px;
+    color: #fff ;
+    border: none;
+    border-radius: 0.25rem;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1rem;
+    cursor: pointer;
+`;
 export const Card = styled.div`
     position: relative;
     background: #fff;
-    padding: 50px 10px 10px 10px;
+    padding: 10px 10px 10px 10px;
     border-radius: 4px;
 `;
+export const CardTitle = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 4px;
 
+    h1, h2, h3, h4 {
+        color: #838383;
+    }
+
+`;
 export const Table = styled.table`
-
     position: inherit;
     border: 1px solid #eee;
     width: 100%;
@@ -70,7 +89,7 @@ export const Table = styled.table`
     th, tr, td{
         border: 1px solid #d3d3d3;
         padding: 5px;
-        font-size: 0.8rem;
+        font-size: 0.7rem;
         text-align: left;
     }
 
