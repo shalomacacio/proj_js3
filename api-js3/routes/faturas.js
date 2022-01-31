@@ -2,22 +2,22 @@ const express = require('express');
 const faturas = express.Router();
 const pool = require('../db/pgsql');
 
-
-
 faturas.get('/',(req, res, next )=>{
-
-res.status(200).send({
-    messgae: "dias:"
-});
+  res.status(200).send({
+      messgae: "dias:"
+  });
       
 })
 
-faturas.get('/inadimplencias',(req, res, next )=>{
+faturas.get('/inadimplencias/:dt' ,(req, res, next )=>{
+
+    var dt_fim = new Date(req.params.dt);
+
 
     var query = "select os.codos, p.codpessoa, p.nome_razaosocial, os.data_abertura, os.data_fechamento, tipo.descricao as tipo_os \
     from public.mk_os as os join mk_pessoas as p on os.cliente = p.codpessoa \
     join mk_os_tipo as tipo on os.tipo_os = tipo.codostipo \
-    where os.data_abertura between '2022-01-01' and '2022-01-27' \
+    where os.data_abertura between '2022-01-01' and '"+ req.params.dt +"' \
     and tipo.descricao ilike '%sup%' \
     group by os.codos, p.codpessoa,  p.nome_razaosocial, tipo.descricao \
     having ( select count(*) from mk_os as os join mk_os_tipo as tipo1 on os.tipo_os = tipo1.codostipo \

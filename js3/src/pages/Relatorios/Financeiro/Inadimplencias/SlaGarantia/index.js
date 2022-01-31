@@ -2,14 +2,17 @@ import React, { useEffect, useState } from 'react';
 import { Card, CardTitle, HorizontalContainer,  LinkBtn,Content, Filter, FilterForm , FormBtn, FormControl, Table } from './SlaGarantiaElements.js'
 import api from '../../../../../services/api';
 
-const SlaGarantia = () => {
+const SlaGarantia = () => {  
+
   const [dados, setDados] = useState([]);
+  const [dataAbertura, setDataAbertura] = useState(new Date().toISOString().split('T')[0]);
 
   useEffect( () => {
-    api.get("/faturas/inadimplencias/").then( (res) => {
+    console.log(dataAbertura)
+    api.get("/faturas/inadimplencias/"+dataAbertura).then( (res) => {
       setDados(res.data);
     });
-  } , []);
+  } , [dataAbertura]);
   
   return(
   <>
@@ -20,11 +23,12 @@ const SlaGarantia = () => {
 
     <Filter>
         <h3> Filtros: </h3>
-      <FilterForm>
+        
+      <FilterForm >
 
         <FormControl>
           <label>Data Abertura</label>
-          <input type={'date'} name='dt_inicio' id='dt_inicio'/>
+          <input type='date' name='data_abertura' onChange={ (e) => setDataAbertura(e.target.value) }/>
         </FormControl>
 
         <FormBtn>

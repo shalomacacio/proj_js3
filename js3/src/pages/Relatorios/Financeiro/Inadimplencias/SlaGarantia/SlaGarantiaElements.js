@@ -16,9 +16,13 @@ export const Filter = styled.div`
     display: flex;
     align-items: center;
     padding: 0px 20px;
+    font-size: 14px;
+    text-transform: uppercase;
 
     h3 {
         color: #838383;
+        font-size: 16px;
+        
     }
 `;
 
@@ -70,15 +74,14 @@ export const Card = styled.div`
     border-radius: 4px;
 `;
 export const CardTitle = styled.div`
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    border-radius: 4px;
-
+ 
     h1, h2, h3, h4 {
         color: #838383;
     }
-
 `;
 export const Table = styled.table`
     position: inherit;
