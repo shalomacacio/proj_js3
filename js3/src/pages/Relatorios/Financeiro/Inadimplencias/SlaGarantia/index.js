@@ -1,18 +1,29 @@
 import React, { useEffect, useState } from 'react';
-import { Card, CardTitle, HorizontalContainer,  LinkBtn,Content, Filter, FilterForm , FormBtn, FormControl, Table } from './SlaGarantiaElements.js'
+import { Card, CardTitle, HorizontalContainer,  LinkBtn,Content, Filter, Form , FormBtn, FormControl, Table } from './SlaGarantiaElements.js'
 import api from '../../../../../services/api';
 
 const SlaGarantia = () => {  
 
   const [dados, setDados] = useState([]);
+  const [form, setForm] = useState({abertura: ""});
   const [dataAbertura, setDataAbertura] = useState(new Date().toISOString().split('T')[0]);
 
   useEffect( () => {
-    console.log(dataAbertura)
     api.get("/faturas/inadimplencias/"+dataAbertura).then( (res) => {
       setDados(res.data);
     });
   } , [dataAbertura]);
+
+  const handle = (e) => {
+    setForm({abertua: e.target.value});
+  }
+
+ const submit = (e) => {
+    e.preventDefault();
+    setDataAbertura(form.abertua);
+ }
+
+
   
   return(
   <>
@@ -24,18 +35,19 @@ const SlaGarantia = () => {
     <Filter>
         <h3> Filtros: </h3>
         
-      <FilterForm >
+      <Form onSubmit={ (e) => submit(e)} >
 
         <FormControl>
           <label>Data Abertura</label>
-          <input type='date' name='data_abertura' onChange={ (e) => setDataAbertura(e.target.value) }/>
+          <input type='date' name='abertura' onChange={ (e) => handle(e) } value={form.abertura}/>
+
         </FormControl>
 
-        <FormBtn>
+        <FormBtn type='submit'>
           Cuida !
         </FormBtn>
         
-      </FilterForm>
+      </Form>
     </Filter>
     
   </HorizontalContainer>
@@ -43,6 +55,7 @@ const SlaGarantia = () => {
     <Content>
       <Card>
         <CardTitle>
+          <p>Período: { form.abertura }</p>
           <h4> RELATÓRIO: SLA-GARANTIA </h4>
           <LinkBtn green> Exportar Excel </LinkBtn>
         </CardTitle>

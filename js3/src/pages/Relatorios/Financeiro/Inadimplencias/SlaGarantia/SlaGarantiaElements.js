@@ -1,6 +1,8 @@
 import styled from "styled-components";
 
 export const Content = styled.main`
+
+    position: inherit;
     background: #eee;
     height: auto;
     padding: 10px;
@@ -26,7 +28,7 @@ export const Filter = styled.div`
     }
 `;
 
-export const FilterForm = styled.form`
+export const Form = styled.form`
     padding: 10px;
     display: flex;
 `
@@ -68,13 +70,13 @@ export const LinkBtn = styled.button`
     cursor: pointer;
 `;
 export const Card = styled.div`
-    position: relative;
+    position: inherit;
     background: #fff;
     padding: 10px 10px 10px 10px;
     border-radius: 4px;
 `;
 export const CardTitle = styled.div`
-    position: relative;
+    position: inherit;
     display: flex;
     align-items: center;
     justify-content: space-between;
