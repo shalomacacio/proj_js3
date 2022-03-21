@@ -8,7 +8,7 @@ const Header = () => {
   return (
     <HeaderContainer>
         <VerticalContainer>
-            <MenuItem>
+            {/* <MenuItem>
                 <MenuCheck type={'checkbox'} id='check1'/> 
                 <MenuLbl htmlFor='check1' >Menu</MenuLbl>
                 <MenuUl>
@@ -17,7 +17,7 @@ const Header = () => {
                     <MenuLi><MenuLink to="/">Estoque</MenuLink> </MenuLi>
                     <MenuLi><MenuLink to="/">Relatórios</MenuLink> </MenuLi>
                 </MenuUl>
-            </MenuItem>
+            </MenuItem> */}
         </VerticalContainer>
 
         <MenuLink to="/"><LogoImg src={logo}  alt='logo'/> </MenuLink> 
